@@ -1,9 +1,33 @@
 <script>
 import ContainerFilms from './partials/ContainerFilms.vue';
 import ContainerSerieTv from './partials/ContainerSerieTv.vue';
+import { store } from '../data/store'; 
+
 
 export default{
   name:'Main',
+  data(){
+    return{
+      store
+    }
+  },
+ /*  methods:{
+    getApi(){
+      axios.get(store.apiUrl ,{
+        params: store.apiParams
+      })
+      .then(res => {
+        store.film = res.data.results;
+        console.log(store.film);
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+    }
+  },
+  mounted(){
+    // this.getApi() 
+  }, */
   components:{
     ContainerFilms,
     ContainerSerieTv
@@ -13,10 +37,21 @@ export default{
 </script>
 
 <template>
-  <h1>io sono i due container</h1>
+  <div class="container_custom">
+    <ContainerFilms />
+    <ContainerSerieTv />
+
+  </div>
   
 </template>
 
 <style lang="scss">
+.container_custom{
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
 
 </style>

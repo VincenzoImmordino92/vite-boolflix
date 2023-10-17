@@ -1,0 +1,25 @@
+@use './partials/vars' as*;
+
+@import 'bootstrap/scss/bootstrap';
+
+
+
+body{
+  color:white;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    lighten($primary-color, 5%),
+    lighten($primary-color, 10%)
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  color:red;
+  font-weight: 700;
+  text-transform:capitalize;
+}
