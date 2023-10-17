@@ -18,21 +18,27 @@ export default{
     SearchBar
   },
   methods:{
-    getApi(){
-      axios.get(store.apiUrl ,{
+    getApi(type){
+      axios.get(store.apiUrl + type,{
         params: store.apiParams
       })
       .then(res => {
-        store.film = res.data.results;
-        console.log(store.film);
+        store[type] = res.data.results;
+        console.log(store.movie);
+        console.log(store.tv);
+        
       })
       .catch(err =>{
         console.log(err);
       })
+    },
+    startSearch(){
+      this.getApi('movie') 
+      this.getApi('tv')
     }
   },
   mounted(){
-    this.getApi() 
+    /* this.startSearch() */
   }
 }
 
@@ -42,7 +48,7 @@ export default{
   <div class="row">
     <div class="col custom">
       <Logo />
-      <SearchBar @startSearch="getApi"/> 
+      <SearchBar @startSearch="startSearch"/> 
     </div>
   </div>
 </template>

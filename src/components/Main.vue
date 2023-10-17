@@ -38,8 +38,8 @@ export default{
 
 <template>
   <div class="container_custom">
-    <ContainerFilms />
-    <ContainerSerieTv />
+    <ContainerFilms  title="film" type="movie"/>
+    <ContainerSerieTv title="Serie Tv" type="tv"/>
 
   </div>
   

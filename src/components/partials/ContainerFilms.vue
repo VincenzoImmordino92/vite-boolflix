@@ -5,6 +5,10 @@ import Card from './Card.vue'
 
 export default{
   name:'ContainerFilms',
+  props:{
+    title:String,
+    type: String
+  },
   data(){
     return{
       store
@@ -19,9 +23,9 @@ export default{
 
 <template>
   <div class="container_custom_film">
-    <h1>Film</h1>
+    <h1>{{ title }}</h1>
     <div class="row row-cols-4">
-    <Card v-for="card in store.film" :key="card.id" :card="card"/>
+    <Card v-for="card in store[type]" :key="card.id" :card="card"/>
       
     </div>
     
