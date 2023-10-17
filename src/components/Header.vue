@@ -11,6 +11,7 @@ export default{
   data(){
     return{
       store
+      
     }
   },
   components:{
@@ -29,12 +30,24 @@ export default{
         
       })
       .catch(err =>{
-        console.log(err);
+        
       })
     },
     startSearch(){
-      this.getApi('movie') 
-      this.getApi('tv')
+      store.movie = store.tv = []
+      
+      if(store.type == '' || store.type == 'movie'){
+        this.getApi('movie')
+      }
+      if(store.type == '' || store.type == 'tv'){
+        this.getApi('tv')
+      }
+
+      if(store.movie.length == 0 && store.tv.length == 0){
+        store.error = 'Nessun Risultato trovato per "' + store.apiParams.query +'"'
+      }else{
+        store.error = ''
+      }
     }
   },
   mounted(){

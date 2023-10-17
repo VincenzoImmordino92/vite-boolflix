@@ -24,7 +24,7 @@ export default{
 <template>
   <div class="container_custom_film">
     <h1>{{ title }}</h1>
-    <div class="row row-cols-4">
+    <div class="row">
     <Card v-for="card in store[type]" :key="card.id" :card="card"/>
       
     </div>

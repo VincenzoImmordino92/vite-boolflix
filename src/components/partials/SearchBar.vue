@@ -20,10 +20,10 @@ export default{
       <span class="input-group-text" id="inputGroup-sizing-default"></span>
       <input  v-model.trim="store.apiParams.query" type="text" class="form-control" placeholder="Cerca un film o serie tv" @keyup.enter="$emit('startSearch')">
     </div>
-    <select  class="form-select" aria-label="Default select example">
+    <select v-model="store.type" @change="$emit('startSearch')" class="form-select" aria-label="Default select example">
       <option selected>Seleziona il genere</option>
       <option value="">All</option>
-      <option value="film">Film</option>
+      <option value="movie">Film</option>
       <option value="tv">Serie Tv</option>
     </select>
 

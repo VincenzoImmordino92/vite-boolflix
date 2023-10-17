@@ -7,6 +7,8 @@ export const store = reactive({
     language: 'it-It',
     query:'',
   },
+  error:'',
+  type:'',
   movie: [],
   tv:[]
 })

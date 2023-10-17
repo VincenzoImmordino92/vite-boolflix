@@ -38,8 +38,9 @@ export default{
 
 <template>
   <div class="container_custom">
-    <ContainerFilms  title="film" type="movie"/>
-    <ContainerSerieTv title="Serie Tv" type="tv"/>
+    <ContainerFilms v-if="store.movie.length > 0" title="Film" type="movie"/>
+    <ContainerSerieTv v-if="store.tv.length > 0 " title="Serie Tv" type="tv"/>
+      <div v-if="store.movie.length == 0 && store.tv.length == 0" class="">{{ store.error }}</div>
 
   </div>
   
