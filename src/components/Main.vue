@@ -46,7 +46,7 @@ export default{
   
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container_custom{
   width: 80%;
   height: 90%;

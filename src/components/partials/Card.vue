@@ -2,8 +2,18 @@
 
 export default{
   name:'Card',
+  data(){
+    return{
+      flags:['en','it']
+    }
+  },
   props:{
     card: Object
+  },
+  methods:{ 
+    getImagePath(img){
+      return new URL(`../../assets/img/${img}.png`, import.meta.url).href
+    }
   },
   computed:{
     stars(){
@@ -15,21 +25,25 @@ export default{
 </script>
 
 <template>
-  <div class="col-3">
+  <div class=" box_card d-flex justify-content-between">
     <div class="card_custom">
         <div class="box_image">
-          <img  :src="`https://image.tmdb.org/t/p/w342/${card.poster_path}`" :alt="card.title || card.name">
+          <img v-if="card.poster_path" :src="`https://image.tmdb.org/t/p/w342/${card.poster_path}`" :alt="card.title || card.name">
+          <img v-else src="/public/No-Image-Placeholder.svg.png" :alt="card.title || card.name">
         </div>
         
-        <div class="box_info" type="animation">
-          <h5 class="card-title">{{ card.title || card.name }}</h5>
-          <h6 class="card-title">{{ card.original_title || card.original_name}}</h6>
-          <p class="card-text"><img :src="`/public/${ card.original_language }.png`" :alt="card.original_language"></p>
+        <div class="box_info d-flex flex-column justify-content-between">
+          <h5 class="card_title_name_custom">{{ card.title || card.name }}</h5>
+          <h6 class="card_original_custom">{{ card.original_title || card.original_name}}</h6>
+          <img v-if="flags.includes(card.original_language)" :src="getImagePath(card.original_language)" :alt="card.original_language">
+          <p v-else class="card-text">Lingua: {{ card.original_language }}</p>
+          
+          <p class="overview">Informazioni:<br>{{ card.overview }}</p>
           <p class="card-text">Voto:
-            <i v-for="star in stars" :key="star" class="fa-solid fa-star"></i>
-            <i v-for="star in (5- stars)" :key="star" class="fa-regular fa-star"></i>
+            <i v-for="star in 5" :key="star" class="fa-star" :class="(star <= stars) ? 'fa-solid' : 'fa-regular' "></i>
+          </p>
             
-          </p>  
+            
         </div>
     </div>
   </div>
@@ -38,29 +52,58 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-.card_custom{
-  background-color: black;
-  width: 200px;
-  height:300px;
-  padding: 10px;
-  margin: 12px;
-  cursor: pointer;
-  position: relative;
-  .box_image{
-    width: 100%;
-    img{
-      width:100% ;
+
+.box_card{
+  width: 250px;
+  height: 339px;
+  margin: 5px 5px 10px 0px;
+    .card_custom{
+      height: 100%;
+      cursor: pointer;
+      position: relative;
+    .box_image{
+      width: 100%;
+      height: 100%;
+        img{
+          width:100%;
+          height: 100%;
+          object-fit: contain;
+        }
     }
-  }
-  .box_info{
-    display: none;
-    position: absolute;
-    top: 20px;
-  }
-  &:hover{
+    .card_title_name_custom{
+      font-size: 1.3rem;
+    }
+    .card_original_custom{
+      font-size: 0.7rem;
+    }
+    .card-text{
+      font-size: 0.89rem;
+    }
+    .overview{
+      height: calc(100% - 180px);
+      overflow-x: auto;
+      &:hover{
+        overflow-x: auto;
+      }
+    }
+  
     .box_info{
-      display: inline-block;
-    }    
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      padding: 10px 0px;
+      background-color: rgba(0, 0, 0, 0.534);
+      img{
+        width: 25px;
+        margin-left: 10px;
+      }
+    }
+    &:hover{
+        display: inline-block;
+      }    
+    }
+  
   }
-}
 </style>

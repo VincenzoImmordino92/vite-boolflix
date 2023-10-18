@@ -1,11 +1,13 @@
 @use './partials/vars' as*;
 
 @import 'bootstrap/scss/bootstrap';
-
+// Supports weights 100-900
+@import '@fontsource-variable/outfit';
 
 
 body{
   color:white;
+  font-family: $font-family;
   min-height: 100vh;
   background-image: linear-gradient(
     lighten($primary-color, 5%),
@@ -19,7 +21,7 @@ h3,
 h4,
 h5,
 h6{
-  color:red;
+  color:white;
   font-weight: 700;
   text-transform:capitalize;
 }

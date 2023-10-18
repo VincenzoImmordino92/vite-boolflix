@@ -15,10 +15,9 @@ export default{
 </script>
 
 <template>
-  <div class="custom">
-    <div class="input-group mb-3 ">
-      <span class="input-group-text" id="inputGroup-sizing-default"></span>
-      <input  v-model.trim="store.apiParams.query" type="text" class="form-control" placeholder="Cerca un film o serie tv" @keyup.enter="$emit('startSearch')">
+  <div class="custom ">
+    <div class="input-group">
+      <input  v-model.trim="store.apiParams.query" type="text" class="form-control" placeholder="Cerca Film o Serie Tv" @keyup.enter="$emit('startSearch')">
     </div>
     <select v-model="store.type" @change="$emit('startSearch')" class="form-select" aria-label="Default select example">
       <option selected>Seleziona il genere</option>

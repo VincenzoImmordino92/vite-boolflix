@@ -58,7 +58,7 @@ export default{
 </script>
 
 <template>
-  <div class="row">
+  <div class="row custom_row">
     <div class="col custom">
       <Logo />
       <SearchBar @startSearch="startSearch"/> 
@@ -66,9 +66,15 @@ export default{
   </div>
 </template>
 
-<style lang="scss">
-.custom{
+<style lang="scss" scoped>
+.custom_row{
+height: 80px;
+padding: 10px 20px;
+  .custom{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+}
+
 </style>

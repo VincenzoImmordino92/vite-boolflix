@@ -33,9 +33,5 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-.container_custom_film{
-  background-color: gray;
-  border: 1px solid white;
-  margin-bottom: 50px;
-}
+
 </style>

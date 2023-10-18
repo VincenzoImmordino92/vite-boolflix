@@ -12,9 +12,10 @@ export default{
   
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .box-image{
-  width: 150px;
+  width: 200px;
+  margin-top: 10px;
   img{
     width: 100%;
   }
