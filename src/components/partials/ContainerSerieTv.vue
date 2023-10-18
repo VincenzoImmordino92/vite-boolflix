@@ -31,9 +31,4 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-  .container_custom_serietv{
-    background-color: lightsteelblue;
-    border: 1px solid white;
-
-  }
 </style>
